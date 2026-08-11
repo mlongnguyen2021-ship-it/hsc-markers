@@ -31,12 +31,20 @@ Use $mark-hsc-biology to mark this 4-mark response. Here is the question,
 the student answer, and the relevant marking guideline.
 ```
 
-## Bring your own sources
+## Biology source library
 
-This public repository intentionally contains no exam papers, marking guidelines, syllabuses, commercial notes, converted documents, or student responses. Provide the question, mark value, stimulus, and any authorised reference material when using a marker.
+The repository includes the authorised Biology materials used to calibrate this marker:
+
+- NSW HSC papers, marking guidelines, criteria and the Stage 6 syllabus;
+- Year 12 Biology notes covering Modules 5–8;
+- a Markdown companion for every PDF so the collection can be searched locally.
+
+Open the original PDF whenever a question depends on a graph, diagram, table, pedigree or page layout. One image-only notes PDF required OCR, so its Markdown companion may contain recognition errors.
+
+See the [source catalogue](sources/biology/CATALOG.md) for the full inventory and [DATA_POLICY.md](DATA_POLICY.md) before contributing more material.
 
 See [DATA_POLICY.md](DATA_POLICY.md) before contributing.
 
 ## Adding another HSC marker
 
-Create a new folder under `skills/` with its own `SKILL.md`, `agents/openai.yaml`, and only the generic references or scripts needed for that subject. Keep copyrighted source material and student data outside the repository.
+Create a new folder under `skills/` with its own `SKILL.md`, `agents/openai.yaml`, and the references or scripts needed for that subject. Only publish source material you are authorised to redistribute, and never commit student data.

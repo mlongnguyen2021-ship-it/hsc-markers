@@ -19,9 +19,9 @@ Use official material provided by the user in this order:
 4. Consult authorised Year 12 notes for definitions, examples, and mechanisms.
 5. Use analogous official criteria only when no exact guide is available.
 
-Do not assume that this public skill contains papers, guides, syllabuses, notes, or student data. Ask for missing material when it could change the score materially. If exact criteria are unavailable, give a clearly labelled estimate.
+The repository source library is indexed in [../../sources/biology/CATALOG.md](../../sources/biology/CATALOG.md). Search the exact paper and marking guide first, then the syllabus, then the notes. Notes calibrate terminology and Year 12 depth; they do not override an official criterion. Ask for missing question text, stimulus or student work when it could change the score materially. If exact criteria are unavailable, give a clearly labelled estimate.
 
-Use `python scripts/find_evidence.py "term one" "term two" --context 5` to search Markdown references that the user has added locally. For tables, graphs, diagrams, pedigree charts, experimental setups, or image-only sources, inspect the original document or attachment visually.
+Use `python scripts/find_evidence.py "term one" "term two" --context 5` to search the skill references and every Markdown source companion. Narrow by source with `--file`, such as `--file 2024-hsc-biology-mg`. For tables, graphs, diagrams, pedigree charts, experimental setups, or OCR sources, inspect the original PDF or attachment visually.
 
 ## Establish the marking contract
 
@@ -87,7 +87,7 @@ When asked for a model answer:
 
 ## Protect source and student data
 
-- Do not add source documents or student data to this skill folder.
+- Do not add student data or source material that is not authorised for publication.
 - Do not reproduce long passages from copyrighted sources.
 - Do not claim access to an exact marking guideline that has not been supplied.
 - Do not infer unseen graph, diagram, table, or pedigree features from broken extraction.

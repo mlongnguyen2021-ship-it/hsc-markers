@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Search the bundled HSC Biology Markdown references with context."""
+"""Search the HSC Biology skill references and source library with context."""
 
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ from pathlib import Path
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Search HSC Biology skill references for one or more terms."
+        description="Search HSC Biology references and source Markdown for terms."
     )
     parser.add_argument("terms", nargs="+", help="Terms or phrases to search for")
     parser.add_argument(
@@ -32,13 +32,17 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    root = Path(__file__).resolve().parent.parent / "references"
+    skill_root = Path(__file__).resolve().parent.parent
+    repo_root = skill_root.parent.parent
+    roots = [skill_root / "references", repo_root / "sources" / "biology"]
     file_filter = args.file.casefold()
     patterns = [re.compile(re.escape(term), re.IGNORECASE) for term in args.terms]
     shown = 0
 
-    for path in sorted(root.glob("*.md")):
-        if file_filter and file_filter not in path.name.casefold():
+    paths = sorted(path for root in roots if root.is_dir() for path in root.rglob("*.md"))
+    for path in paths:
+        label = path.relative_to(repo_root)
+        if file_filter and file_filter not in str(label).casefold():
             continue
         try:
             lines = path.read_text(encoding="utf-8-sig", errors="replace").splitlines()
@@ -58,7 +62,7 @@ def main() -> int:
             end = min(len(lines), index + max(0, args.context) + 1)
             if start <= previous_end:
                 continue
-            print(f"\n=== {path.name}:{index + 1} ===")
+            print(f"\n=== {label}:{index + 1} ===")
             for line_no in range(start, end):
                 marker = ">" if line_no == index else " "
                 print(f"{marker}{line_no + 1:5d} | {lines[line_no]}")
