@@ -18,6 +18,8 @@ The first marker in this repository is for Year 12 Biology. It is designed to:
 
 ## Quick install
 
+Never used PowerShell or Terminal before? Follow the [beginner-friendly step-by-step installation guide](INSTALL.md).
+
 ### Windows
 
 Download the installer once in Windows PowerShell 5.1 or later:
