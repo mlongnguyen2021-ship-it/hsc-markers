@@ -18,6 +18,8 @@ The first marker in this repository is for Year 12 Biology. It is designed to:
 
 ## Quick install
 
+### Windows
+
 Download the installer once in Windows PowerShell 5.1 or later:
 
 ```powershell
@@ -39,6 +41,28 @@ Or install for Claude Code:
 ```
 
 The installer includes the full Biology source library. Re-run the command with `-Force` to update an existing installation.
+
+### macOS and Linux
+
+Download the Bash installer:
+
+```bash
+curl -fsSL 'https://raw.githubusercontent.com/mlongnguyen2021-ship-it/hsc-markers/main/install.sh' -o /tmp/install-hsc-marker.sh
+```
+
+Install for Codex:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target codex
+```
+
+Or install for Claude Code:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target claude-code
+```
+
+Re-run the command with `--force` to update an existing installation.
 
 | Target | Skill location | Source-library location | Invocation |
 | --- | --- | --- | --- |
