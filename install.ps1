@@ -5,7 +5,7 @@ param(
     [ValidateSet('Codex', 'ClaudeCode')]
     [string]$Target = 'Codex',
 
-    [ValidateSet('Biology', 'BusinessStudies')]
+    [ValidateSet('Biology', 'BusinessStudies', 'EnglishStandard')]
     [string]$Subject = 'Biology',
 
     [string]$DestinationRoot,
@@ -30,12 +30,19 @@ if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
 }
 
 $destinationRootFull = [IO.Path]::GetFullPath($DestinationRoot)
-if ($Subject -eq 'Biology') {
-    $skillName = 'mark-hsc-biology'
-    $sourceName = 'biology'
-} else {
-    $skillName = 'mark-hsc-business-studies'
-    $sourceName = 'business-studies'
+switch ($Subject) {
+    'Biology' {
+        $skillName = 'mark-hsc-biology'
+        $sourceName = 'biology'
+    }
+    'BusinessStudies' {
+        $skillName = 'mark-hsc-business-studies'
+        $sourceName = 'business-studies'
+    }
+    'EnglishStandard' {
+        $skillName = 'mark-hsc-english-standard'
+        $sourceName = 'english-standard'
+    }
 }
 $skillDestination = Join-Path $destinationRootFull "skills\$skillName"
 $sourceDestination = Join-Path $destinationRootFull "sources\$sourceName"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "HSC English Standard Marker"
+  short_description: "Mark NSW HSC English Standard responses"
+  default_prompt: "Use $mark-hsc-english-standard to mark this HSC English Standard response against the question, module rubric, criteria and Year 12 standard."

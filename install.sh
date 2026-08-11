@@ -9,7 +9,7 @@ force=0
 
 usage() {
   cat <<'EOF'
-Usage: install.sh [--target codex|claude-code] [--subject biology|business-studies] [--destination-root PATH] [--force]
+Usage: install.sh [--target codex|claude-code] [--subject biology|business-studies|english-standard] [--destination-root PATH] [--force]
 
 Installs one HSC marker and its source library for Codex or Claude Code.
 EOF
@@ -57,8 +57,12 @@ case "$subject" in
     skill_name="mark-hsc-business-studies"
     source_name="business-studies"
     ;;
+  english-standard)
+    skill_name="mark-hsc-english-standard"
+    source_name="english-standard"
+    ;;
   *)
-    echo "Subject must be biology or business-studies." >&2
+    echo "Subject must be biology, business-studies, or english-standard." >&2
     exit 2
     ;;
 esac

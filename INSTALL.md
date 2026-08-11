@@ -30,7 +30,7 @@ You will need:
 - about 400 MB of free space during installation;
 - five to ten minutes.
 
-Biology contains 38 PDFs and Business Studies contains 24 PDFs. Every PDF has a searchable Markdown version, so the download can take a few minutes. It may look as though the installer has paused while the files are downloading.
+Biology contains 38 PDFs, Business Studies contains 24 PDFs, and English Standard contains 15 PDFs. Every PDF has a searchable Markdown version, so the download can take a few minutes. It may look as though the installer has paused while the files are downloading.
 
 ## Choose your subject
 
@@ -40,8 +40,9 @@ Choose the marker you want to install:
 | --- | --- | --- |
 | Biology | `$mark-hsc-biology` | `/mark-hsc-biology` |
 | Business Studies | `$mark-hsc-business-studies` | `/mark-hsc-business-studies` |
+| English Standard | `$mark-hsc-english-standard` | `/mark-hsc-english-standard` |
 
-You can install both subjects. Run the installer once for Biology and once for Business Studies.
+You can install any or all three subjects. Run the installer once for each subject you want.
 
 ## Choose Codex or Claude Code
 
@@ -95,6 +96,12 @@ For Business Studies in Codex:
 & $installer -Target Codex -Subject BusinessStudies
 ```
 
+For English Standard in Codex:
+
+```powershell
+& $installer -Target Codex -Subject EnglishStandard
+```
+
 For Biology in Claude Code:
 
 ```powershell
@@ -107,6 +114,12 @@ For Business Studies in Claude Code:
 & $installer -Target ClaudeCode -Subject BusinessStudies
 ```
 
+For English Standard in Claude Code:
+
+```powershell
+& $installer -Target ClaudeCode -Subject EnglishStandard
+```
+
 The installer will say that it is downloading the latest HSC Markers release. Leave PowerShell open until you see a message beginning with:
 
 ```text
@@ -117,6 +130,12 @@ or:
 
 ```text
 Installed mark-hsc-business-studies
+```
+
+or:
+
+```text
+Installed mark-hsc-english-standard
 ```
 
 ### Step 4: restart your program
@@ -159,6 +178,12 @@ For Business Studies in Codex:
 bash /tmp/install-hsc-marker.sh --target codex --subject business-studies
 ```
 
+For English Standard in Codex:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target codex --subject english-standard
+```
+
 For Biology in Claude Code:
 
 ```bash
@@ -171,6 +196,12 @@ For Business Studies in Claude Code:
 bash /tmp/install-hsc-marker.sh --target claude-code --subject business-studies
 ```
 
+For English Standard in Claude Code:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target claude-code --subject english-standard
+```
+
 Press **Return** and wait until you see a message beginning with:
 
 ```text
@@ -181,6 +212,12 @@ or:
 
 ```text
 Installed mark-hsc-business-studies
+```
+
+or:
+
+```text
+Installed mark-hsc-english-standard
 ```
 
 ### Step 4: restart your program
@@ -229,6 +266,12 @@ For Business Studies in Codex:
 bash /tmp/install-hsc-marker.sh --target codex --subject business-studies
 ```
 
+For English Standard in Codex:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target codex --subject english-standard
+```
+
 For Biology in Claude Code:
 
 ```bash
@@ -241,6 +284,12 @@ For Business Studies in Claude Code:
 bash /tmp/install-hsc-marker.sh --target claude-code --subject business-studies
 ```
 
+For English Standard in Claude Code:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target claude-code --subject english-standard
+```
+
 Wait until you see a message beginning with:
 
 ```text
@@ -251,6 +300,12 @@ or:
 
 ```text
 Installed mark-hsc-business-studies
+```
+
+or:
+
+```text
+Installed mark-hsc-english-standard
 ```
 
 ### Step 5: restart your program
@@ -285,6 +340,19 @@ Student response: Market segmentation means dividing a total market into groups 
 
 The response should include a mark, a judgement, what earned marks, and a minimum full-mark answer.
 
+### English Standard in Codex
+
+Start a new Codex task and paste this example:
+
+```text
+Use $mark-hsc-english-standard to mark this response.
+
+Question: Explain how one language feature represents a human experience. (3 marks)
+Student response: The metaphor “a wall between us” represents isolation. By comparing emotional distance to a physical barrier, the metaphor shows that the speaker feels unable to connect with another person.
+```
+
+The response should include a mark, an overall judgement, evidence from the student's wording, and a specific improvement where needed.
+
 ### In Claude Code
 
 Type the command for the subject you installed and press **Enter**.
@@ -299,6 +367,12 @@ For Business Studies:
 
 ```text
 /mark-hsc-business-studies
+```
+
+For English Standard:
+
+```text
+/mark-hsc-english-standard
 ```
 
 Then ask Claude to mark a response, including the subject question, total marks, and student answer. Claude Code should use the chosen HSC marker automatically.
@@ -321,6 +395,12 @@ Update Business Studies in Codex:
 & $installer -Target Codex -Subject BusinessStudies -Force
 ```
 
+Update English Standard in Codex:
+
+```powershell
+& $installer -Target Codex -Subject EnglishStandard -Force
+```
+
 Update Biology in Claude Code:
 
 ```powershell
@@ -331,6 +411,12 @@ Update Business Studies in Claude Code:
 
 ```powershell
 & $installer -Target ClaudeCode -Subject BusinessStudies -Force
+```
+
+Update English Standard in Claude Code:
+
+```powershell
+& $installer -Target ClaudeCode -Subject EnglishStandard -Force
 ```
 
 ### macOS or Linux
@@ -347,6 +433,12 @@ Update Business Studies in Codex:
 bash /tmp/install-hsc-marker.sh --target codex --subject business-studies --force
 ```
 
+Update English Standard in Codex:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target codex --subject english-standard --force
+```
+
 Update Biology in Claude Code:
 
 ```bash
@@ -357,6 +449,12 @@ Update Business Studies in Claude Code:
 
 ```bash
 bash /tmp/install-hsc-marker.sh --target claude-code --subject business-studies --force
+```
+
+Update English Standard in Claude Code:
+
+```bash
+bash /tmp/install-hsc-marker.sh --target claude-code --subject english-standard --force
 ```
 
 Restart the program after updating.
@@ -383,6 +481,12 @@ For Business Studies in Codex:
 powershell -ExecutionPolicy Bypass -File $installer -Target Codex -Subject BusinessStudies
 ```
 
+For English Standard in Codex:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File $installer -Target Codex -Subject EnglishStandard
+```
+
 For Claude Code:
 
 ```powershell
@@ -393,6 +497,12 @@ For Business Studies in Claude Code:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File $installer -Target ClaudeCode -Subject BusinessStudies
+```
+
+For English Standard in Claude Code:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File $installer -Target ClaudeCode -Subject EnglishStandard
 ```
 
 ### Linux says curl or unzip is missing

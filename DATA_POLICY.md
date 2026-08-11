@@ -1,6 +1,6 @@
 # Data and source policy
 
-This repository contains reusable marking logic and public Biology and Business Studies source libraries. The contributor has confirmed that the included source files may be used and published here.
+This repository contains reusable marking logic and public Biology, Business Studies, and English Standard source libraries. The contributor has confirmed that the included source files may be used and published here.
 
 Every source PDF is stored with a same-named Markdown companion for search and analysis. Markdown conversions are derivative text and may lose diagrams, formatting or OCR accuracy; the PDF remains the source of truth for visual material.
 
