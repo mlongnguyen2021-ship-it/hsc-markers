@@ -5,6 +5,9 @@ param(
     [ValidateSet('Codex', 'ClaudeCode')]
     [string]$Target = 'Codex',
 
+    [ValidateSet('Biology', 'BusinessStudies')]
+    [string]$Subject = 'Biology',
+
     [string]$DestinationRoot,
 
     [switch]$Force
@@ -27,8 +30,15 @@ if ([string]::IsNullOrWhiteSpace($DestinationRoot)) {
 }
 
 $destinationRootFull = [IO.Path]::GetFullPath($DestinationRoot)
-$skillDestination = Join-Path $destinationRootFull 'skills\mark-hsc-biology'
-$sourceDestination = Join-Path $destinationRootFull 'sources\biology'
+if ($Subject -eq 'Biology') {
+    $skillName = 'mark-hsc-biology'
+    $sourceName = 'biology'
+} else {
+    $skillName = 'mark-hsc-business-studies'
+    $sourceName = 'business-studies'
+}
+$skillDestination = Join-Path $destinationRootFull "skills\$skillName"
+$sourceDestination = Join-Path $destinationRootFull "sources\$sourceName"
 $existing = @($skillDestination, $sourceDestination)
 $existing = @($existing | Where-Object { Test-Path -LiteralPath $_ })
 
@@ -65,8 +75,8 @@ try {
         throw 'The downloaded repository archive was empty.'
     }
 
-    Copy-Tree -Source (Join-Path $repositoryRoot 'skills\mark-hsc-biology') -Destination $skillDestination
-    Copy-Tree -Source (Join-Path $repositoryRoot 'sources\biology') -Destination $sourceDestination
+    Copy-Tree -Source (Join-Path $repositoryRoot "skills\$skillName") -Destination $skillDestination
+    Copy-Tree -Source (Join-Path $repositoryRoot "sources\$sourceName") -Destination $sourceDestination
 } finally {
     $resolvedTempRoot = [IO.Path]::GetFullPath($tempRoot)
     if ($resolvedTempRoot.StartsWith($tempBase, [StringComparison]::OrdinalIgnoreCase) -and
@@ -75,9 +85,9 @@ try {
     }
 }
 
-Write-Host "Installed mark-hsc-biology for $Target at $skillDestination"
+Write-Host "Installed $skillName for $Target at $skillDestination"
 if ($Target -eq 'Codex') {
-    Write-Host 'Restart Codex, then invoke $mark-hsc-biology.'
+    Write-Host "Restart Codex, then invoke `$$skillName."
 } else {
-    Write-Host 'Restart Claude Code if needed, then invoke /mark-hsc-biology.'
+    Write-Host "Restart Claude Code if needed, then invoke /$skillName."
 }

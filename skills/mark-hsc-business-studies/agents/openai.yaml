@@ -1,0 +1,4 @@
+interface:
+  display_name: "HSC Business Studies Marker"
+  short_description: "Mark NSW HSC Business Studies responses"
+  default_prompt: "Use $mark-hsc-business-studies to mark this HSC Business Studies response against the question, criteria and Year 12 standard."

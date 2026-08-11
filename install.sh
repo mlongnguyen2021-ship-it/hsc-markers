@@ -3,14 +3,15 @@
 set -euo pipefail
 
 target="codex"
+subject="biology"
 destination_root=""
 force=0
 
 usage() {
   cat <<'EOF'
-Usage: install.sh [--target codex|claude-code] [--destination-root PATH] [--force]
+Usage: install.sh [--target codex|claude-code] [--subject biology|business-studies] [--destination-root PATH] [--force]
 
-Installs the HSC Biology marker and its source library for Codex or Claude Code.
+Installs one HSC marker and its source library for Codex or Claude Code.
 EOF
 }
 
@@ -19,6 +20,11 @@ while (($#)); do
     --target)
       [[ $# -ge 2 ]] || { echo "Missing value for --target" >&2; exit 2; }
       target="$2"
+      shift 2
+      ;;
+    --subject)
+      [[ $# -ge 2 ]] || { echo "Missing value for --subject" >&2; exit 2; }
+      subject="$2"
       shift 2
       ;;
     --destination-root)
@@ -42,14 +48,29 @@ while (($#)); do
   esac
 done
 
+case "$subject" in
+  biology)
+    skill_name="mark-hsc-biology"
+    source_name="biology"
+    ;;
+  business-studies)
+    skill_name="mark-hsc-business-studies"
+    source_name="business-studies"
+    ;;
+  *)
+    echo "Subject must be biology or business-studies." >&2
+    exit 2
+    ;;
+esac
+
 case "$target" in
   codex)
     destination_root="${destination_root:-${CODEX_HOME:-$HOME/.codex}}"
-    invocation='$mark-hsc-biology'
+    invocation="\$$skill_name"
     ;;
   claude-code)
     destination_root="${destination_root:-$HOME/.claude}"
-    invocation='/mark-hsc-biology'
+    invocation="/$skill_name"
     ;;
   *)
     echo "Target must be codex or claude-code." >&2
@@ -64,8 +85,8 @@ for command_name in curl unzip; do
   }
 done
 
-skill_destination="$destination_root/skills/mark-hsc-biology"
-source_destination="$destination_root/sources/biology"
+skill_destination="$destination_root/skills/$skill_name"
+source_destination="$destination_root/sources/$source_name"
 
 if ((force == 0)) && { [[ -e "$skill_destination" ]] || [[ -e "$source_destination" ]]; }; then
   echo "Already installed under $destination_root. Re-run with --force to update it." >&2
@@ -93,8 +114,8 @@ repository_root="$temp_dir/expanded/hsc-markers-main"
 [[ -d "$repository_root" ]] || { echo "The downloaded repository archive was invalid." >&2; exit 1; }
 
 mkdir -p "$skill_destination" "$source_destination"
-cp -R "$repository_root/skills/mark-hsc-biology/." "$skill_destination/"
-cp -R "$repository_root/sources/biology/." "$source_destination/"
+cp -R "$repository_root/skills/$skill_name/." "$skill_destination/"
+cp -R "$repository_root/sources/$source_name/." "$source_destination/"
 
-echo "Installed mark-hsc-biology for $target at $skill_destination"
+echo "Installed $skill_name for $target at $skill_destination"
 echo "Restart the host if needed, then invoke $invocation."
