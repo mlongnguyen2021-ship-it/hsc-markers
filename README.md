@@ -43,8 +43,6 @@ Open the original PDF whenever a question depends on a graph, diagram, table, pe
 
 See the [source catalogue](sources/biology/CATALOG.md) for the full inventory and [DATA_POLICY.md](DATA_POLICY.md) before contributing more material.
 
-See [DATA_POLICY.md](DATA_POLICY.md) before contributing.
-
 ## Adding another HSC marker
 
 Create a new folder under `skills/` with its own `SKILL.md`, `agents/openai.yaml`, and the references or scripts needed for that subject. Only publish source material you are authorised to redistribute, and never commit student data.
