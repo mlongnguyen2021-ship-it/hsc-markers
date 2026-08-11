@@ -16,15 +16,36 @@ The first marker in this repository is for Year 12 Biology. It is designed to:
 | --- | --- |
 | [`mark-hsc-biology`](skills/mark-hsc-biology/) | Mark and improve NSW HSC Biology responses for Modules 5–8. |
 
-## Install the Biology marker
+## Quick install
 
-Copy `skills/mark-hsc-biology` into your Codex skills directory:
+Download the installer once in Windows PowerShell 5.1 or later:
 
-```text
-~/.codex/skills/mark-hsc-biology
+```powershell
+$installer = Join-Path $env:TEMP 'install-hsc-marker.ps1'
+Invoke-WebRequest 'https://raw.githubusercontent.com/mlongnguyen2021-ship-it/hsc-markers/main/install.ps1' -OutFile $installer
+Unblock-File $installer
 ```
 
-Then invoke it with a prompt such as:
+Install for Codex:
+
+```powershell
+& $installer -Target Codex
+```
+
+Or install for Claude Code:
+
+```powershell
+& $installer -Target ClaudeCode
+```
+
+The installer includes the full Biology source library. Re-run the command with `-Force` to update an existing installation.
+
+| Target | Skill location | Source-library location | Invocation |
+| --- | --- | --- | --- |
+| Codex | `~/.codex/skills/mark-hsc-biology` | `~/.codex/sources/biology` | `$mark-hsc-biology` |
+| Claude Code | `~/.claude/skills/mark-hsc-biology` | `~/.claude/sources/biology` | `/mark-hsc-biology` |
+
+Restart the host after the first install, then use a prompt such as:
 
 ```text
 Use $mark-hsc-biology to mark this 4-mark response. Here is the question,
