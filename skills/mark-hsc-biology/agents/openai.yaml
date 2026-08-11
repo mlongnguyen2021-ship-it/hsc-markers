@@ -1,0 +1,4 @@
+interface:
+  display_name: "HSC Biology Marker"
+  short_description: "Mark Year 12 Biology responses consistently"
+  default_prompt: "Use $mark-hsc-biology to mark this HSC Biology response against the question, marks, syllabus and NESA standard."
